@@ -148,6 +148,12 @@ public sealed class JobQueueEngine
         _store.Upsert(job);
     }
 
+    public void Delete(string id)
+    {
+        _ = _store.Get(id) ?? throw new KeyNotFoundException($"No job with id '{id}'.");
+        _store.Delete(id);
+    }
+
     public Job? Get(string id) => _store.Get(id);
 
     public IReadOnlyList<Job> List(JobStatus? status = null) =>
