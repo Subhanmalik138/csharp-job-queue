@@ -1,0 +1,19 @@
+## Build output
+bin/
+obj/
+out/
+
+## .NET
+*.user
+*.suo
+.vs/
+*.userosscache
+*.sln.docstates
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Data (JobQueue runtime files — never commit a live queue)
+*.log
+data/
