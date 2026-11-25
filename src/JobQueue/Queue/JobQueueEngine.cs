@@ -134,6 +134,20 @@ public sealed class JobQueueEngine
         return job;
     }
 
+    /// <summary>
+    /// Give up a Running job without counting the attempt — used when a worker
+    /// is shut down mid-job. The job returns to Pending for the next run.
+    /// </summary>
+    public void Abandon(string id)
+    {
+        var job = _store.Get(id);
+        if (job is not { Status: JobStatus.Running }) return;
+        job.Status = JobStatus.Pending;
+        job.Attempts = Math.Max(0, job.Attempts - 1);
+        job.UpdatedAt = _clock();
+        _store.Upsert(job);
+    }
+
     public Job? Get(string id) => _store.Get(id);
 
     public IReadOnlyList<Job> List(JobStatus? status = null) =>
