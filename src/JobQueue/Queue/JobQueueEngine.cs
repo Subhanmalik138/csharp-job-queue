@@ -173,7 +173,8 @@ public sealed class JobQueueEngine
             all.Count(j => j.Status == JobStatus.DeadLettered));
     }
 
-    internal TimeSpan ComputeBackoff(int attemptsSpent)
+    /// <summary>Backoff delay after <paramref name="attemptsSpent"/> attempts.</summary>
+    public TimeSpan ComputeBackoff(int attemptsSpent)
     {
         var exponent = Math.Min(attemptsSpent - 1, 10);
         var delay = BaseBackoff * Math.Pow(2, exponent);

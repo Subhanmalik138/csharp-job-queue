@@ -54,8 +54,21 @@ public sealed class ShellJobHandler : IJobHandler
         using var process = new Process { StartInfo = startInfo };
         process.Start();
 
-        await process.StandardInput.WriteAsync(input ?? "");
-        process.StandardInput.Close();
+        // Best-effort: many commands (e.g. `echo`) exit without reading stdin,
+        // so a broken pipe here is not a job failure — the exit code decides.
+        try
+        {
+            await process.StandardInput.WriteAsync(input ?? "");
+            process.StandardInput.Close();
+        }
+        catch (IOException)
+        {
+            // Reader closed stdin before we wrote; ignore.
+        }
+        catch (InvalidOperationException)
+        {
+            // Process already exited; ignore.
+        }
 
         using var timeout = new CancellationTokenSource(Timeout);
         using var linked = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeout.Token);

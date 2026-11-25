@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobQueue", "src\JobQueue\Jo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobQueue.Cli", "src\JobQueue.Cli\JobQueue.Cli.csproj", "{444DC94D-9F82-4FD8-8062-7DBD2470A8F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AEBA3B4D-4BB8-414C-82CE-7702EABC92BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobQueue.Tests", "tests\JobQueue.Tests\JobQueue.Tests.csproj", "{AB5372D7-E9EE-4704-BD13-AA700A26AE49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +30,14 @@ Global
 		{444DC94D-9F82-4FD8-8062-7DBD2470A8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{444DC94D-9F82-4FD8-8062-7DBD2470A8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{444DC94D-9F82-4FD8-8062-7DBD2470A8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB5372D7-E9EE-4704-BD13-AA700A26AE49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5372D7-E9EE-4704-BD13-AA700A26AE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5372D7-E9EE-4704-BD13-AA700A26AE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5372D7-E9EE-4704-BD13-AA700A26AE49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{93D00425-6E2C-45A7-AF1A-30796142430A} = {AE1F1288-9538-43BE-B7DE-0B0866827547}
 		{444DC94D-9F82-4FD8-8062-7DBD2470A8F4} = {AE1F1288-9538-43BE-B7DE-0B0866827547}
+		{AB5372D7-E9EE-4704-BD13-AA700A26AE49} = {AEBA3B4D-4BB8-414C-82CE-7702EABC92BC}
 	EndGlobalSection
 EndGlobal
